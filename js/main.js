@@ -27,3 +27,20 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     document.querySelector('.nav-links').classList.remove('active');
   });
 });
+
+// Typing effect for text
+document.addEventListener('DOMContentLoaded', () => {
+  const text = "Web Application Penetration Tester | Offensive Security Specialist";
+  const typingElement = document.getElementById('typing-effect');
+  let index = 0;
+
+  function typeCharacter() {
+    if (index < text.length) {
+      typingElement.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeCharacter, 100); // Adjust typing speed (100ms per character)
+    }
+  }
+
+  typeCharacter();
+});

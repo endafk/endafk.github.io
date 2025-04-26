@@ -449,3 +449,15 @@
       font-size: 1rem; /* Adjust author font size for smaller screens */
     }
   }
+
+  #typing-effect {
+    display: inline-block;
+    border-right: 10px solid #66ff66; /* Green blinking cursor */
+    animation: blink 0.7s steps(2, start) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
