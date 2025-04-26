@@ -1,0 +1,451 @@
+/* ====== CSS: Dark Hacker Aesthetic ====== */
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Fira Code', monospace;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding-top: 70px; /* Adjust this value based on the height of your navbar */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h1, h2, h3, h4 {
+    color: #66ff66;
+  }
+  
+  a {
+    color: #66b2ff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #0f0;
+    padding: 8px;
+    z-index: 100;
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* Navigation */
+  .navbar {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between logo and nav-links */
+    align-items: center; /* Vertically center items */
+    position: fixed; /* Keep navbar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays above other elements */
+    background-color: #111; /* Background color */
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+  }
+
+  .navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #66ff66; /* Bright green color for the logo */
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex; /* Align links horizontally */
+    gap: 2rem; /* Add space between links */
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  }
+
+  .nav-links li a:hover {
+    color: #66ff66; /* Bright green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+
+  .nav-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #66ff66;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  /* Responsive: Show nav-toggle and hide nav-links on smaller screens */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      background-color: #111;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      left: 0;
+      display: none; /* Hidden by default */
+      padding: 1rem;
+    }
+
+    .nav-links.active {
+      display: flex; /* Show when active */
+    }
+
+    .nav-toggle {
+      display: block; /* Show toggle button */
+    }
+
+    .nav-links li a {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 255, 0, 0.1));
+    padding: 5rem 0;
+    text-align: center;
+  }
+  
+  /* General Button Styles */
+  .btn {
+    display: inline-block;
+    background-color: #66ff66; /* Bright green background */
+    color: #000; /* Black text */
+    padding: 0.75rem 2rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+
+  /* Hover Effect for Buttons */
+  .btn:hover {
+    background-color: #00cc44; /* Darker green on hover */
+    color: #fff; /* White text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+
+  /* Responsive Button Styles */
+  @media (max-width: 768px) {
+    .btn {
+      padding: 0.6rem 1.5rem; /* Adjust padding for smaller screens */
+      font-size: 0.9rem; /* Slightly smaller font size */
+    }
+  }
+  
+  /* Sections */
+  section {
+    padding: 4rem 0;
+  }
+  
+  .skills-grid, .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .skill, .project {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .skill:hover, .project:hover {
+    transform: scale(1.05);
+    background-color: #222;
+  }
+  
+  .quote blockquote {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #00ff99;
+    padding: 2rem;
+    background: #111;
+    border-left: 5px solid #0f0;
+  }
+  
+  .contact ul {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  .contact li {
+    margin-bottom: 1rem;
+  }
+  
+  .footer {
+    background-color: #111; /* Dark background for contrast */
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #e0e0e0; /* Light text color */
+    border-top: 2px solid #66ff66; /* Green border at the top */
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .social-links a {
+    color: #66ff66; /* Green color for icons */
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: #00cc44; /* Brighter green on hover */
+    transform: scale(1.2); /* Slight zoom effect */
+  }
+
+  /* About Me Section */
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #1a1a1a; /* Lighter shade than the site's background */
+    border-radius: 10px; /* Rounded corners */
+    margin: 2rem auto; /* Add spacing around the section */
+    width: 90%; /* Add padding to the edges */
+    max-width: 1200px; /* Limit the maximum width */
+  }
+
+  /* Skills Section */
+  .skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #1a1a1a; /* Lighter shade than the site's background */
+    border-radius: 10px; /* Rounded corners */
+    margin: 2rem auto; /* Add spacing around the section */
+    width: 90%; /* Add padding to the edges */
+    max-width: 1200px; /* Limit the maximum width */
+  }
+
+  .skills ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+  }
+
+  .skills ul li {
+    margin: 0.5rem 0; /* Add spacing between skills */
+  }
+
+  /* Projects Section */
+  .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #1a1a1a; /* Lighter shade than the site's background */
+    border-radius: 10px; /* Rounded corners */
+    margin: 2rem auto; /* Add spacing around the section */
+    width: 90%; /* Add padding to the edges */
+    max-width: 1200px; /* Limit the maximum width */
+  }
+
+  .project-card {
+    background-color: #222; /* Slightly darker shade for project cards */
+    padding: 1rem;
+    border-radius: 8px; /* Rounded corners for project cards */
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
+
+  /* Report Section (Breach Chronicles) */
+  .report {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    padding: 2rem 1rem; /* Add padding to the section */
+    background-color: #1a1a1a; /* Lighter shade than the site's background */
+    border-radius: 10px; /* Rounded corners */
+    margin: 2rem auto; /* Center the section with spacing */
+    width: 90%; /* Add padding to the edges */
+    max-width: 1200px; /* Limit the maximum width */
+    position: relative; /* For the green bar */
+  }
+
+  /* Add a green vertical bar to the left */
+  .report::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px; /* Width of the green bar */
+    height: 100%; /* Full height of the section */
+    background-color: #66ff66; /* Bright green color */
+    border-radius: 10px 0 0 10px; /* Match the section's rounded corners */
+  }
+
+  /* Contact Section */
+  .contact {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #1a1a1a; /* Lighter shade than the site's background */
+    border-radius: 10px;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .contact h2 {
+    font-size: 2rem;
+    color: #66ff66;
+    margin-bottom: 1rem;
+  }
+
+  .contact p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .contact-card {
+    background-color: #222;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-card i {
+    font-size: 2.5rem;
+    color: #66ff66;
+    margin-bottom: 1rem;
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p {
+    font-size: 1rem;
+    color: #bfbfbf;
+  }
+
+  .contact-card a {
+    color: #66ff66;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-card a:hover {
+    color: #00cc44;
+  }
+
+  /* Quote Section */
+  .quote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    background-color: #1a1a1a; /* Slightly lighter background */
+    border-radius: 10px;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .quote-card {
+    background-color: #222; /* Dark card background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .quote blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #e0e0e0; /* Light text color */
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .quote-author {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #66ff66; /* Green accent for the author */
+    margin-top: 1rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .quote blockquote {
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    .quote-author {
+      font-size: 1rem; /* Adjust author font size for smaller screens */
+    }
+  }
