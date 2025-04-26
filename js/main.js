@@ -82,3 +82,32 @@ document.querySelectorAll('section').forEach(section => {
 document.querySelectorAll('.contact-card').forEach((card, index) => {
   card.style.setProperty('--card-index', index);
 });
+
+// Navbar glass blur on scroll
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 10) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Fade-in for images and cards
+function fadeInOnView(selector) {
+  const elements = document.querySelectorAll(selector);
+  const obs = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  elements.forEach(el => obs.observe(el));
+}
+
+fadeInOnView('.project-image');
+fadeInOnView('.project-card');
+fadeInOnView('.contact-card');
+fadeInOnView('.quote-card');
