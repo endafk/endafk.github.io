@@ -30,7 +30,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // Typing effect for text
 document.addEventListener('DOMContentLoaded', () => {
-  const text = "Web Application Penetration Tester | Offensive Security Specialist";
+  const text = "Web Application Penetration Tester & Offensive Security Specialist";
   const typingElement = document.getElementById('typing-effect');
   let index = 0;
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (index < text.length) {
       typingElement.textContent += text.charAt(index);
       index++;
-      setTimeout(typeCharacter, 100); // Adjust typing speed (100ms per character)
+      setTimeout(typeCharacter, 50); // Adjust typing speed (100ms per character)
     }
   }
 
