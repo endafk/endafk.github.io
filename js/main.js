@@ -33,14 +33,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const text = "Web Application Penetration Tester & Offensive Security Specialist";
   const typingElement = document.getElementById('typing-effect');
   let index = 0;
-
-  function typeCharacter() {
+  
+  async function typeWithPause() {
     if (index < text.length) {
       typingElement.textContent += text.charAt(index);
       index++;
-      setTimeout(typeCharacter, 50); // Adjust typing speed (100ms per character)
+      
+      // Add random delay between characters for realistic typing
+      const delay = Math.random() * 50 + 30;
+      await new Promise(resolve => setTimeout(resolve, delay));
+      
+      // Add longer pause at punctuation marks
+      if ([',', '.', '&'].includes(text.charAt(index - 1))) {
+        await new Promise(resolve => setTimeout(resolve, 400));
+      }
+      
+      typeWithPause();
     }
   }
+  
+  typeWithPause();
+});
 
-  typeCharacter();
+// Intersection Observer for reveal animations
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+  section.style.opacity = '0';
+  section.style.transform = 'translateY(20px)';
+  observer.observe(section);
+});
+
+// Add floating animation delays to contact cards
+document.querySelectorAll('.contact-card').forEach((card, index) => {
+  card.style.setProperty('--card-index', index);
 });
